@@ -1,0 +1,11 @@
+/.idea
+/node_modules
+/public/css
+/public/fonts
+/public/images
+/public/js
+mix-manifest.json
+.env
+*.lock
+*.log
+*.orig
