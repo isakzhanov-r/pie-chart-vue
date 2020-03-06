@@ -38,7 +38,7 @@
         name: 'Index',
         data: () => ({
             message: 'Колесо удачи',
-            prizes: [],
+            prizes: ['foo1', 'bar1', 'foo2', 'bar2', 'foo3', 'bar3', 'foo4', 'bar4'],
             circle: {
                 _count: 0,
                 _value: 0,
@@ -54,7 +54,6 @@
         },
         methods: {
             getPrizes() {
-                this.prizes = ['foo1', 'bar1', 'foo2', 'bar2', 'foo3', 'bar3', 'foo4', 'bar4'];
                 this.circle._count = this.prizes.length;
                 this.circle._deg = 360 / this.circle._count;
                 this.circle._value = 100 / this.circle._count;
@@ -64,17 +63,12 @@
                 let index = this.randomInteger(0, this.prizes.length - 1);
                 let circle = document.querySelector('.circle');
                 let g = (this.circle._deg * index) + 90;
-                console.log(g);
-                console.log(g + (360 * 3) + this.circle._rotateLabel);
-
                 if (this.circle.degree % 1 === 0) {
-                    this.circle.degree = this.circle.degree + (360 * 3) + g + this.circle._rotateLabel;
+                    this.circle.degree = this.circle.degree + g + (360 * 3) + this.circle._rotateLabel;
                 } else {
                     this.circle.degree = this.circle.degree + (360 * 3) + g;
                 }
-                circle.style.transform = 'rotate(' + this.circle.degree + 'deg)';
-                console.log(this.prizes[index]);
-
+                circle.style.transform = 'rotate( -' + this.circle.degree + 'deg)';
             },
             randomInteger(min, max) {
                 var rand = min + Math.random() * (max - min);
